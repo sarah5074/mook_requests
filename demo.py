@@ -7,4 +7,5 @@ def send_post(url,data):
     res = requests.post(url=url,data=data).json()
     return res
 print(send_post(url,data))
+print('hell')
 
