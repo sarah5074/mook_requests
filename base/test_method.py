@@ -1,5 +1,6 @@
 import unittest
 from base.demo import RunMain
+from base.mock_demo import *
 #创建一个类继承unittest
 class TestMethod(unittest.TestCase):
 
@@ -11,13 +12,15 @@ class TestMethod(unittest.TestCase):
         url = 'http://127.0.0.1:8000/login/'
         data = {'username':'sarah',
         'password':'fdfd'}
+
         #res = self.run.run_main(url,"POST",data)
         #print(res)
-        res = self.run.run_main(url,"POST",data)
-        self.assertEqual(res['user'],'sarah')
-        globals()['userid'] = 10034   #定义全局变量
+        res = mock_test(self.run.run_main,data,'POST',url,data)
+
+        #self.assertEqual(res['user'],'sarah')
+        #globals()['userid'] = 10034   #定义全局变量
         #return self.user_id
-        #print(res)
+        print(res)
 
     @unittest.skip('test_002')    #跳过test_002的方法
     def test_002(self):
